@@ -2,11 +2,11 @@ import json
 import getpass
 from cryptography.fernet import Fernet
 
-# Generate a random key for encryption (keep it safe!)
+#Generate a random key for encryption
 def generate_key():
     return Fernet.generate_key()
 
-# Encrypt and decrypt data using the key
+#Encrypt and decrypt data using the key
 def encrypt_data(key, data):
     fernet = Fernet(key)
     return fernet.encrypt(data.encode()).decode()
@@ -15,7 +15,7 @@ def decrypt_data(key, encrypted_data):
     fernet = Fernet(key)
     return fernet.decrypt(encrypted_data.encode()).decode()
 
-# Load or create the key
+#Load or create the key
 try:
     with open("key.key", "rb") as key_file:
         key = key_file.read()
@@ -24,14 +24,14 @@ except FileNotFoundError:
     with open("key.key", "wb") as key_file:
         key_file.write(key)
 
-# Load or create the password database
+#Load or create the password database
 try:
     with open("passwords.json", "r") as db_file:
         encrypted_db = json.load(db_file)
 except FileNotFoundError:
     encrypted_db = {}
 
-# Main menu
+#Main menu
 while True:
     print("\nPassword Manager Menu:")
     print("1. Add a new password")
