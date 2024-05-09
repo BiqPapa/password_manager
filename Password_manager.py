@@ -2,7 +2,6 @@ import json
 import getpass
 from cryptography.fernet import Fernet
 
-#Generate a random key for encryption
 def generate_key():
     return Fernet.generate_key()
 
@@ -31,7 +30,6 @@ try:
 except FileNotFoundError:
     encrypted_db = {}
 
-#Main menu
 while True:
     print("\nPassword Manager Menu:")
     print("1. Add a new password")
@@ -44,7 +42,7 @@ while True:
         username = input("Enter username: ")
         password = getpass.getpass("Enter password: ")
 
-        # Encrypt the password before storing
+        #Encrypt the password before storing
         encrypted_password = encrypt_data(key, password)
         encrypted_db[website] = {"username": username, "password": encrypted_password}
 
