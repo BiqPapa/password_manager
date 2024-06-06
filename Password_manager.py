@@ -4,8 +4,7 @@ from cryptography.fernet import Fernet
 
 def generate_key():
     return Fernet.generate_key()
-
-#Encrypt and decrypt data using the key
+    
 def encrypt_data(key, data):
     fernet = Fernet(key)
     return fernet.encrypt(data.encode()).decode()
