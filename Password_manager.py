@@ -13,7 +13,7 @@ def decrypt_data(key, encrypted_data):
     fernet = Fernet(key)
     return fernet.decrypt(encrypted_data.encode()).decode()
 
-#Load or create the key
+
 try:
     with open("key.key", "rb") as key_file:
         key = key_file.read()
